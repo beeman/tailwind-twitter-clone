@@ -14,7 +14,24 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
-    "paths": {}
+    "paths": {
+      "@beehive/api-app-module": ["apps/api/src/app/app.module.ts"],
+      "@beehive/api/auth/data-access": ["libs/api/auth/data-access/src/index.ts"],
+      "@beehive/api/auth/feature": ["libs/api/auth/feature/src/index.ts"],
+      "@beehive/api/core/data-access": ["libs/api/core/data-access/src/index.ts"],
+      "@beehive/api/core/feature": ["libs/api/core/feature/src/index.ts"],
+      "@beehive/web/about/feature": ["libs/web/about/feature/src/index.ts"],
+      "@beehive/web/assets": ["libs/web/assets/src/index.ts"],
+      "@beehive/web/auth/data-access": ["libs/web/auth/data-access/src/index.ts"],
+      "@beehive/web/auth/feature": ["libs/web/auth/feature/src/index.ts"],
+      "@beehive/web/core/data-access": ["libs/web/core/data-access/src/index.ts"],
+      "@beehive/web/core/feature": ["libs/web/core/feature/src/index.ts"],
+      "@beehive/web/dashboard/feature": ["libs/web/dashboard/feature/src/index.ts"],
+      "@beehive/web/layout": ["libs/web/layout/src/index.ts"],
+      "@beehive/web/shell/feature": ["libs/web/shell/feature/src/index.ts"],
+      "@beehive/web/style": ["libs/web/style/src/index.ts"],
+      "@beehive/web/ui-form": ["libs/web/ui-form/src/index.ts"]
+    }
   },
   "exclude": ["node_modules", "tmp"]
 }

@@ -1,7 +1,7 @@
 {
   "npmScope": "beehive",
   "affected": {
-    "defaultBase": "master"
+    "defaultBase": "main"
   },
   "implicitDependencies": {
     "workspace.json": "*",
@@ -22,5 +22,64 @@
       }
     }
   },
-  "projects": {}
+  "projects": {
+    "api": {
+      "tags": []
+    },
+    "api-auth-data-access": {
+      "tags": ["scope:api", "type:data-access"]
+    },
+    "api-auth-feature": {
+      "tags": ["scope:api", "type:feature"]
+    },
+    "api-core-data-access": {
+      "tags": ["scope:api", "type:data-access"]
+    },
+    "api-core-feature": {
+      "tags": ["scope:api", "type:feature"]
+    },
+    "api-e2e": {
+      "tags": []
+    },
+    "web": {
+      "tags": []
+    },
+    "web-about-feature": {
+      "tags": ["scope:web", "type:feature"]
+    },
+    "web-assets": {
+      "tags": ["scope:web", "type:assets"]
+    },
+    "web-auth-data-access": {
+      "tags": ["scope:web", "type:data-access"]
+    },
+    "web-auth-feature": {
+      "tags": ["scope:web", "type:feature"]
+    },
+    "web-core-data-access": {
+      "tags": ["scope:web", "type:data-access"]
+    },
+    "web-core-feature": {
+      "tags": ["scope:web", "type:feature"]
+    },
+    "web-dashboard-feature": {
+      "tags": ["scope:web", "type:feature"]
+    },
+    "web-e2e": {
+      "tags": [],
+      "implicitDependencies": ["web"]
+    },
+    "web-layout": {
+      "tags": ["scope:web", "type:layout"]
+    },
+    "web-shell-feature": {
+      "tags": ["scope:web", "type:feature"]
+    },
+    "web-style": {
+      "tags": ["scope:web", "type:style"]
+    },
+    "web-ui-form": {
+      "tags": ["scope:web", "type:ui"]
+    }
+  }
 }

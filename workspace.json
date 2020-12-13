@@ -1,8 +1,526 @@
 {
   "version": 2,
-
-  "projects": {},
+  "projects": {
+    "api": {
+      "root": "apps/api",
+      "sourceRoot": "apps/api/src",
+      "projectType": "application",
+      "prefix": "api",
+      "targets": {
+        "build": {
+          "executor": "@nrwl/node:build",
+          "outputs": ["{options.outputPath}"],
+          "options": {
+            "outputPath": "dist/apps/api",
+            "main": "apps/api/src/main.ts",
+            "tsConfig": "apps/api/tsconfig.app.json",
+            "assets": ["apps/api/src/assets"]
+          },
+          "configurations": {
+            "production": {
+              "optimization": true,
+              "extractLicenses": true,
+              "inspect": false,
+              "fileReplacements": [
+                {
+                  "replace": "apps/api/src/environments/environment.ts",
+                  "with": "apps/api/src/environments/environment.prod.ts"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "executor": "@nrwl/node:execute",
+          "options": {
+            "buildTarget": "api:build"
+          }
+        },
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["apps/api/**/*.ts"]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": ["coverage/apps/api"],
+          "options": {
+            "jestConfig": "apps/api/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "api-auth-data-access": {
+      "root": "libs/api/auth/data-access",
+      "sourceRoot": "libs/api/auth/data-access/src",
+      "projectType": "library",
+      "targets": {
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["libs/api/auth/data-access/**/*.ts"]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/api/auth/data-access"],
+          "options": {
+            "jestConfig": "libs/api/auth/data-access/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "api-auth-feature": {
+      "root": "libs/api/auth/feature",
+      "sourceRoot": "libs/api/auth/feature/src",
+      "projectType": "library",
+      "targets": {
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["libs/api/auth/feature/**/*.ts"]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/api/auth/feature"],
+          "options": {
+            "jestConfig": "libs/api/auth/feature/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "api-core-data-access": {
+      "root": "libs/api/core/data-access",
+      "sourceRoot": "libs/api/core/data-access/src",
+      "projectType": "library",
+      "targets": {
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["libs/api/core/data-access/**/*.ts"]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/api/core/data-access"],
+          "options": {
+            "jestConfig": "libs/api/core/data-access/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "api-core-feature": {
+      "root": "libs/api/core/feature",
+      "sourceRoot": "libs/api/core/feature/src",
+      "projectType": "library",
+      "targets": {
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["libs/api/core/feature/**/*.ts"]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/api/core/feature"],
+          "options": {
+            "jestConfig": "libs/api/core/feature/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "api-e2e": {
+      "root": "apps/api-e2e",
+      "sourceRoot": "apps/api-e2e/src",
+      "projectType": "application",
+      "prefix": "api-e2e",
+      "targets": {
+        "e2e": {
+          "executor": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "apps/api-e2e/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "executor": "@nrwl/linter:lint",
+          "options": {
+            "linter": "eslint",
+            "tsConfig": ["apps/api-e2e/tsconfig.spec.json"],
+            "exclude": ["**/node_modules/**", "!apps/api-e2e/**/*"]
+          }
+        }
+      }
+    },
+    "web": {
+      "projectType": "application",
+      "root": "apps/web",
+      "sourceRoot": "apps/web/src",
+      "prefix": "beehive",
+      "targets": {
+        "build": {
+          "executor": "@angular-builders/custom-webpack:browser",
+          "options": {
+            "outputPath": "dist/apps/web",
+            "index": "apps/web/src/index.html",
+            "main": "apps/web/src/main.ts",
+            "polyfills": "apps/web/src/polyfills.ts",
+            "tsConfig": "apps/web/tsconfig.app.json",
+            "aot": true,
+            "assets": [
+              {
+                "glob": "favicon.ico",
+                "input": "libs/web/assets/src",
+                "output": "./"
+              },
+              {
+                "glob": "**/*",
+                "input": "libs/web/assets/src/assets",
+                "output": "assets"
+              }
+            ],
+            "styles": ["apps/web/src/styles.scss", "libs/web/style/src/index.scss"],
+            "scripts": [],
+            "allowedCommonJsDependencies": ["graphql-tag", "subscriptions-transport-ws", "zen-observable"],
+            "customWebpackConfig": {
+              "path": "webpack.config.js"
+            }
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "libs/web/core/feature/src/environments/environment.ts",
+                  "with": "libs/web/core/feature/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "executor": "@angular-builders/custom-webpack:dev-server",
+          "options": {
+            "browserTarget": "web:build",
+            "proxyConfig": "apps/web/proxy.conf.js"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "web:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "executor": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "web:build"
+          }
+        },
+        "lint": {
+          "executor": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": ["apps/web/tsconfig.app.json", "apps/web/tsconfig.spec.json", "apps/web/tsconfig.editor.json"],
+            "exclude": ["**/node_modules/**", "!apps/web/**/*"]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": ["coverage/apps/web"],
+          "options": {
+            "jestConfig": "apps/web/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "web-about-feature": {
+      "projectType": "library",
+      "root": "libs/web/about/feature",
+      "sourceRoot": "libs/web/about/feature/src",
+      "prefix": "about",
+      "targets": {
+        "lint": {
+          "executor": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": ["libs/web/about/feature/tsconfig.lib.json", "libs/web/about/feature/tsconfig.spec.json"],
+            "exclude": ["**/node_modules/**", "!libs/web/about/feature/**/*"]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/web/about/feature"],
+          "options": {
+            "jestConfig": "libs/web/about/feature/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "web-assets": {
+      "projectType": "library",
+      "root": "libs/web/assets",
+      "sourceRoot": "libs/web/assets/src",
+      "prefix": "assets",
+      "targets": {}
+    },
+    "web-auth-data-access": {
+      "projectType": "library",
+      "root": "libs/web/auth/data-access",
+      "sourceRoot": "libs/web/auth/data-access/src",
+      "prefix": "auth",
+      "targets": {
+        "lint": {
+          "executor": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": ["libs/web/auth/data-access/tsconfig.lib.json", "libs/web/auth/data-access/tsconfig.spec.json"],
+            "exclude": ["**/node_modules/**", "!libs/web/auth/data-access/**/*"]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/web/auth/data-access"],
+          "options": {
+            "jestConfig": "libs/web/auth/data-access/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "web-auth-feature": {
+      "projectType": "library",
+      "root": "libs/web/auth/feature",
+      "sourceRoot": "libs/web/auth/feature/src",
+      "prefix": "auth",
+      "targets": {
+        "lint": {
+          "executor": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": ["libs/web/auth/feature/tsconfig.lib.json", "libs/web/auth/feature/tsconfig.spec.json"],
+            "exclude": ["**/node_modules/**", "!libs/web/auth/feature/**/*"]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/web/auth/feature"],
+          "options": {
+            "jestConfig": "libs/web/auth/feature/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "web-core-data-access": {
+      "projectType": "library",
+      "root": "libs/web/core/data-access",
+      "sourceRoot": "libs/web/core/data-access/src",
+      "prefix": "core",
+      "targets": {
+        "lint": {
+          "executor": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": ["libs/web/core/data-access/tsconfig.lib.json", "libs/web/core/data-access/tsconfig.spec.json"],
+            "exclude": ["**/node_modules/**", "!libs/web/core/data-access/**/*"]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/web/core/data-access"],
+          "options": {
+            "jestConfig": "libs/web/core/data-access/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "web-core-feature": {
+      "projectType": "library",
+      "root": "libs/web/core/feature",
+      "sourceRoot": "libs/web/core/feature/src",
+      "prefix": "core",
+      "targets": {
+        "lint": {
+          "executor": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": ["libs/web/core/feature/tsconfig.lib.json", "libs/web/core/feature/tsconfig.spec.json"],
+            "exclude": ["**/node_modules/**", "!libs/web/core/feature/**/*"]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/web/core/feature"],
+          "options": {
+            "jestConfig": "libs/web/core/feature/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "web-dashboard-feature": {
+      "projectType": "library",
+      "root": "libs/web/dashboard/feature",
+      "sourceRoot": "libs/web/dashboard/feature/src",
+      "prefix": "dashboard",
+      "targets": {
+        "lint": {
+          "executor": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/web/dashboard/feature/tsconfig.lib.json",
+              "libs/web/dashboard/feature/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/web/dashboard/feature/**/*"]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/web/dashboard/feature"],
+          "options": {
+            "jestConfig": "libs/web/dashboard/feature/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "web-e2e": {
+      "root": "apps/web-e2e",
+      "sourceRoot": "apps/web-e2e/src",
+      "projectType": "application",
+      "targets": {
+        "e2e": {
+          "executor": "@nrwl/cypress:cypress",
+          "options": {
+            "cypressConfig": "apps/web-e2e/cypress.json",
+            "tsConfig": "apps/web-e2e/tsconfig.e2e.json",
+            "devServerTarget": "web:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "web:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "executor": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": ["apps/web-e2e/tsconfig.e2e.json"],
+            "exclude": ["**/node_modules/**", "!apps/web-e2e/**/*"]
+          }
+        }
+      }
+    },
+    "web-layout": {
+      "projectType": "library",
+      "root": "libs/web/layout",
+      "sourceRoot": "libs/web/layout/src",
+      "prefix": "layout",
+      "targets": {
+        "lint": {
+          "executor": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": ["libs/web/layout/tsconfig.lib.json", "libs/web/layout/tsconfig.spec.json"],
+            "exclude": ["**/node_modules/**", "!libs/web/layout/**/*"]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/web/layout"],
+          "options": {
+            "jestConfig": "libs/web/layout/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "web-shell-feature": {
+      "projectType": "library",
+      "root": "libs/web/shell/feature",
+      "sourceRoot": "libs/web/shell/feature/src",
+      "prefix": "shell",
+      "targets": {
+        "lint": {
+          "executor": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": ["libs/web/shell/feature/tsconfig.lib.json", "libs/web/shell/feature/tsconfig.spec.json"],
+            "exclude": ["**/node_modules/**", "!libs/web/shell/feature/**/*"]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/web/shell/feature"],
+          "options": {
+            "jestConfig": "libs/web/shell/feature/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "web-style": {
+      "projectType": "library",
+      "root": "libs/web/style",
+      "sourceRoot": "libs/web/style/src",
+      "prefix": "style",
+      "targets": {}
+    },
+    "web-ui-form": {
+      "projectType": "library",
+      "root": "libs/web/ui-form",
+      "sourceRoot": "libs/web/ui-form/src",
+      "prefix": "form",
+      "targets": {
+        "lint": {
+          "executor": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": ["libs/web/ui-form/tsconfig.lib.json", "libs/web/ui-form/tsconfig.spec.json"],
+            "exclude": ["**/node_modules/**", "!libs/web/ui-form/**/*"]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/web/ui-form"],
+          "options": {
+            "jestConfig": "libs/web/ui-form/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    }
+  },
   "cli": {
-    "defaultCollection": "@nrwl/workspace"
+    "defaultCollection": "@nrwl/nest"
+  },
+  "defaultProject": "api",
+  "generators": {
+    "@nrwl/angular:application": {
+      "unitTestRunner": "jest",
+      "e2eTestRunner": "cypress"
+    },
+    "@nrwl/angular:library": {
+      "unitTestRunner": "jest"
+    }
   }
 }

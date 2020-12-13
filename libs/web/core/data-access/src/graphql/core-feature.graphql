@@ -1,0 +1,21 @@
+query Uptime {
+  uptime
+}
+
+fragment IntercomDetails on IntercomMessage {
+  type
+  scope
+  payload
+}
+
+mutation IntercomPub($type: String!, $scope: String, $payload: JSON) {
+  intercomPub(type: $type, scope: $scope, payload: $payload) {
+    ...IntercomDetails
+  }
+}
+
+subscription IntercomSub {
+  intercomSub {
+    ...IntercomDetails
+  }
+}
