@@ -1,0 +1,40 @@
+<div class="dark:bg-gray-900 bg-gray-50 dark:text-gray-200 text-green-900 h-full flex flex-col">
+  <!--  Top Bar -->
+  <div class="py-3 px-4 flex items-center border-b dark:border-gray-700">
+    <!--    Avatar -->
+    <div class="">
+      <img class="h-7 w-7 mr-8" src="https://avatars2.githubusercontent.com/u/74118049?v=4" alt="User Avatar" />
+    </div>
+    <!--    Title-->
+    <div class="flex-grow">
+      <div class="font-semibold text-xl">Latest Tweets</div>
+    </div>
+    <!--    Icon-->
+    <div class="">
+      <div class="h-6 w-6 bg-blue-500"></div>
+    </div>
+  </div>
+
+  <div class="flex-grow overflow-auto">
+    <router-outlet></router-outlet>
+  </div>
+  <!--  Bottom Bar-->
+  <div class="flex justify-between border-t dark:border-gray-700">
+    <!--    Home-->
+    <a class="flex-grow flex justify-center py-3">
+      <div class="h-7 w-7 bg-blue-500"></div>
+    </a>
+    <!--    Search-->
+    <a class="flex-grow flex justify-center py-3">
+      <div class="h-7 w-7 bg-blue-500"></div>
+    </a>
+    <!--    Notifications-->
+    <a class="flex-grow flex justify-center py-3">
+      <div class="h-7 w-7 bg-blue-500"></div>
+    </a>
+    <!--    Messages-->
+    <a class="flex-grow flex justify-center py-3">
+      <div class="h-7 w-7 bg-blue-500"></div>
+    </a>
+  </div>
+</div>

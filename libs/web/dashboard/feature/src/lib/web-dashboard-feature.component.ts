@@ -1,21 +1,196 @@
 import { Component } from '@angular/core'
-import { WebCoreDataAccessService } from '@beehive/web/core/data-access'
 
 @Component({
-  template: `
-    <div class="container my-3 my-md-5">
-      <div class="card">
-        <div class="card-header">Dashboard</div>
-        <div class="card-body">
-          <pre>{{ me$ | async | json }}</pre>
-        </div>
-        <div class="card-footer">Server uptime: {{ uptime$ | async }}</div>
-      </div>
-    </div>
-  `,
+  templateUrl: './web-dashboard-feature.component.html',
 })
 export class WebDashboardFeatureComponent {
-  public uptime$ = this.data.uptimeWatch()
-  public me$ = this.data.me()
-  constructor(private readonly data: WebCoreDataAccessService) {}
+  posts = [
+    {
+      author: {
+        avatarUrl: 'https://avatars3.githubusercontent.com/u/36491?v=4',
+        name: 'beeman 🐝',
+        username: 'beeman_nl',
+      },
+      createdAt: '36m',
+      text: 'We are live now!! 🚀',
+      retweetCount: 6,
+      likeCount: 4,
+    },
+    {
+      author: {
+        avatarUrl: 'https://avatars3.githubusercontent.com/u/36491?v=4',
+        name: 'beeman 🐝',
+        username: 'beeman_nl',
+      },
+      createdAt: '36m',
+      text: 'We are live now!! 🚀',
+      retweetCount: 6,
+      likeCount: 4,
+    },
+    {
+      author: {
+        avatarUrl: 'https://avatars3.githubusercontent.com/u/36491?v=4',
+        name: 'beeman 🐝',
+        username: 'beeman_nl',
+      },
+      createdAt: '36m',
+      text: 'We are live now!! 🚀',
+      retweetCount: 6,
+      likeCount: 4,
+    },
+    {
+      author: {
+        avatarUrl: 'https://avatars3.githubusercontent.com/u/36491?v=4',
+        name: 'beeman 🐝',
+        username: 'beeman_nl',
+      },
+      createdAt: '36m',
+      text: 'We are live now!! 🚀',
+      retweetCount: 6,
+      likeCount: 4,
+    },
+    {
+      author: {
+        avatarUrl: 'https://avatars3.githubusercontent.com/u/36491?v=4',
+        name: 'beeman 🐝',
+        username: 'beeman_nl',
+      },
+      createdAt: '36m',
+      text: 'We are live now!! 🚀',
+      retweetCount: 6,
+      likeCount: 4,
+    },
+    {
+      author: {
+        avatarUrl: 'https://avatars3.githubusercontent.com/u/36491?v=4',
+        name: 'beeman 🐝',
+        username: 'beeman_nl',
+      },
+      createdAt: '36m',
+      text: 'We are live now!! 🚀',
+      retweetCount: 6,
+      likeCount: 4,
+    },
+    {
+      author: {
+        avatarUrl: 'https://avatars3.githubusercontent.com/u/36491?v=4',
+        name: 'beeman 🐝',
+        username: 'beeman_nl',
+      },
+      createdAt: '36m',
+      text: 'We are live now!! 🚀',
+      retweetCount: 6,
+      likeCount: 4,
+    },
+    {
+      author: {
+        avatarUrl: 'https://avatars3.githubusercontent.com/u/36491?v=4',
+        name: 'beeman 🐝',
+        username: 'beeman_nl',
+      },
+      createdAt: '36m',
+      text: 'We are live now!! 🚀',
+      retweetCount: 6,
+      likeCount: 4,
+    },
+    {
+      author: {
+        avatarUrl: 'https://avatars3.githubusercontent.com/u/36491?v=4',
+        name: 'beeman 🐝',
+        username: 'beeman_nl',
+      },
+      createdAt: '36m',
+      text: 'We are live now!! 🚀',
+      retweetCount: 6,
+      likeCount: 4,
+    },
+    {
+      author: {
+        avatarUrl: 'https://avatars3.githubusercontent.com/u/36491?v=4',
+        name: 'beeman 🐝',
+        username: 'beeman_nl',
+      },
+      createdAt: '36m',
+      text: 'We are live now!! 🚀',
+      retweetCount: 6,
+      likeCount: 4,
+    },
+    {
+      author: {
+        avatarUrl: 'https://avatars3.githubusercontent.com/u/36491?v=4',
+        name: 'beeman 🐝',
+        username: 'beeman_nl',
+      },
+      createdAt: '36m',
+      text: 'We are live now!! 🚀',
+      retweetCount: 6,
+      likeCount: 4,
+    },
+    {
+      author: {
+        avatarUrl: 'https://avatars3.githubusercontent.com/u/36491?v=4',
+        name: 'beeman 🐝',
+        username: 'beeman_nl',
+      },
+      createdAt: '36m',
+      text: 'We are live now!! 🚀',
+      retweetCount: 6,
+      likeCount: 4,
+    },
+    {
+      author: {
+        avatarUrl: 'https://avatars3.githubusercontent.com/u/36491?v=4',
+        name: 'beeman 🐝',
+        username: 'beeman_nl',
+      },
+      createdAt: '36m',
+      text: 'We are live now!! 🚀',
+      retweetCount: 6,
+      likeCount: 4,
+    },
+    {
+      author: {
+        avatarUrl: 'https://avatars3.githubusercontent.com/u/36491?v=4',
+        name: 'beeman 🐝',
+        username: 'beeman_nl',
+      },
+      createdAt: '36m',
+      text: 'We are live now!! 🚀',
+      retweetCount: 6,
+      likeCount: 4,
+    },
+    {
+      author: {
+        avatarUrl: 'https://avatars3.githubusercontent.com/u/36491?v=4',
+        name: 'beeman 🐝',
+        username: 'beeman_nl',
+      },
+      createdAt: '36m',
+      text: 'We are live now!! 🚀',
+      retweetCount: 6,
+      likeCount: 4,
+    },
+    {
+      author: {
+        avatarUrl: 'https://avatars3.githubusercontent.com/u/36491?v=4',
+        name: 'beeman 🐝',
+        username: 'beeman_nl',
+      },
+      createdAt: '36m',
+      text: 'We are live now!! 🚀',
+      retweetCount: 6,
+      likeCount: 4,
+    },
+    {
+      author: {
+        avatarUrl: 'https://avatars3.githubusercontent.com/u/36491?v=4',
+        name: 'beeman 🐝',
+        username: 'beeman_nl',
+      },
+      createdAt: '36m',
+      text: 'We are live now!! 🚀',
+      retweetCount: 6,
+      likeCount: 4,
+    },
+  ]
 }
