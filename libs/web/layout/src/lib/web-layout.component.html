@@ -1,9 +1,9 @@
 <div class="dark:bg-gray-900 bg-gray-50 dark:text-gray-200 text-green-900 h-full flex flex-col">
-  <div class="sm:grid sm:grid-cols-12 md:container md:mx-auto">
+  <div class="sm:grid sm:grid-cols-12 md:container md:mx-auto overflow-auto">
     <!--    Sidebar-->
     <div class="sm:col-span-2 lg:col-span-1 hidden sm:block">
       <!--  Header-->
-      <header class="pt-3 flex flex-col">
+      <header class="py-3 h-full flex flex-col">
         <div class="flex flex-col items-center flex-grow">
           <div class="h-7 w-7 bg-white"></div>
           <nav class="mt-6 space-y-4">
@@ -25,7 +25,7 @@
     </div>
     <!--    Main Area-->
     <div
-      class="sm:col-span-10 md:col-span-9 lg:col-span-7 h-full overflow-auto sm:border-l md:border-r dark:border-gray-700"
+      class="flex flex-col sm:col-span-10 md:col-span-9 lg:col-span-7 h-full overflow-auto sm:border-l md:border-r dark:border-gray-700"
     >
       <!--  Top Bar -->
       <div class="py-3 px-4 flex items-center border-b dark:border-gray-700">
@@ -43,52 +43,53 @@
         </div>
       </div>
 
-      <div class="hidden sm:block">
-        <div class="py-2 px-4 border-b dark:border-gray-700 flex">
-          <!--    Avatar-->
-          <div>
-            <img
-              class="w-12 h-12 rounded-full mr-3"
-              src="https://avatars2.githubusercontent.com/u/74118049?v=4"
-              alt="User Avatar"
-            />
-          </div>
-          <!--    Tweet-->
-          <div class="flex-grow">
-            <!--      Author Info-->
-            <div class="flex items-center space-x-2">
-              <textarea
-                class="dark:bg-gray-900 dark:border-gray-900 dark:focus:ring-gray-900 px-0 py-2 text-xl w-full"
-                name=""
-                id=""
-                rows="1"
-                placeholder="What's happening"
-              ></textarea>
+      <div class="flex-grow overflow-auto">
+        <!-- Compose Tweet -->
+        <div class="hidden sm:block">
+          <div class="py-2 px-4 border-b dark:border-gray-700 flex">
+            <!--    Avatar-->
+            <div>
+              <img
+                class="w-12 h-12 rounded-full mr-3"
+                src="https://avatars2.githubusercontent.com/u/74118049?v=4"
+                alt="User Avatar"
+              />
             </div>
-
-            <!--      Buttons-->
-            <div class="flex justify-between items-center mt-3">
-              <div class="flex space-x-3">
-                <!--        Image-->
-                <div class="h-5 w-5 bg-blue-600"></div>
-                <!--        Gif-->
-                <div class="h-5 w-5 bg-blue-600"></div>
-                <!--        Emoji -->
-                <div class="h-5 w-5 bg-blue-600"></div>
+            <!--    Tweet-->
+            <div class="flex-grow">
+              <!--      Author Info-->
+              <div class="flex items-center space-x-2">
+                <textarea
+                  class="dark:bg-gray-900 dark:border-gray-900 dark:focus:ring-gray-900 px-0 py-2 text-xl w-full"
+                  name=""
+                  id=""
+                  rows="1"
+                  placeholder="What's happening"
+                ></textarea>
               </div>
-              <div>
-                <button class="dark:bg-blue-600 dark:text-white rounded-full font-semibold px-4 py-2">Tweet</button>
+
+              <!--      Buttons-->
+              <div class="flex justify-between items-center mt-3">
+                <div class="flex space-x-3">
+                  <!--        Image-->
+                  <div class="h-5 w-5 bg-blue-600"></div>
+                  <!--        Gif-->
+                  <div class="h-5 w-5 bg-blue-600"></div>
+                  <!--        Emoji -->
+                  <div class="h-5 w-5 bg-blue-600"></div>
+                </div>
+                <div>
+                  <button class="dark:bg-blue-600 dark:text-white rounded-full font-semibold px-4 py-2">Tweet</button>
+                </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
 
-      <div class="flex-grow overflow-auto">
         <router-outlet></router-outlet>
       </div>
       <!--  Bottom Bar-->
-      <div class="flex justify-between border-t dark:border-gray-700">
+      <div class="flex justify-between border-t md:hidden dark:border-gray-700">
         <!--    Home-->
         <a class="flex-grow flex justify-center py-3">
           <div class="h-7 w-7 bg-blue-600"></div>
