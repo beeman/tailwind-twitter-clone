@@ -11,15 +11,13 @@ const routes: Routes = [
     component: WebLayoutComponent,
     canActivate: [IsLoggedInGuard],
     children: [
-      // Application routes here
-      { path: '', pathMatch: 'full', redirectTo: 'dashboard' },
+      {
+        path: '',
+        loadChildren: () => import('@beehive/web/dashboard/feature').then((m) => m.WebDashboardFeatureModule),
+      },
       {
         path: 'about',
         loadChildren: () => import('@beehive/web/about/feature').then((m) => m.WebAboutFeatureModule),
-      },
-      {
-        path: 'dashboard',
-        loadChildren: () => import('@beehive/web/dashboard/feature').then((m) => m.WebDashboardFeatureModule),
       },
     ],
   },

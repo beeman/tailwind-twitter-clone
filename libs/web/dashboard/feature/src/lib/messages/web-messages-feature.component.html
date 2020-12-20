@@ -1,0 +1,131 @@
+<!--Message Grid-->
+<div class="grid grid-cols-12 h-full">
+  <!--  Chat Panel-->
+  <div class="col-span-4 h-full overflow-auto sm:border-l md:border-r dark:border-gray-700">
+    <!--    Top Bar-->
+
+    <div class="py-3 px-4 flex items-center border-b dark:border-gray-700">
+      <!--    Title-->
+      <div class="flex-grow">
+        <div class="font-semibold text-xl">Messages</div>
+      </div>
+      <!--    Icon-->
+      <div class="">
+        <div class="h-6 w-6 bg-blue-600 md:bg-blue-600"></div>
+      </div>
+    </div>
+    <div>
+      <!--      Search Bar-->
+      <div class="px-4 py-1">
+        <input
+          type="search"
+          placeholder="Search for People and Groups"
+          class="dark:bg-gray-800 dark:border-gray-800 dark:text-gray-300 w-full rounded-full"
+        />
+        <!--        Search-->
+      </div>
+      <!--      List of Chat items-->
+      <div>
+        <ng-container *ngFor="let chat of chats">
+          <div class="py-4 px-4 border-b dark:border-gray-700 flex">
+            <!--    Avatar-->
+            <div>
+              <img class="w-12 h-12 rounded-full" [attr.src]="chat.author.avatarUrl" alt="User Avatar" />
+            </div>
+            <!--    Tweet-->
+            <div class="flex-grow">
+              <!--      Author Info-->
+              <div class="flex flex-nowrap items-center space-x-2">
+                <div class="dark:text-white font-semibold whitespace-nowrap">
+                  <!--        Name-->
+                  {{ chat.author.name }}
+                </div>
+                <div class="dark:text-gray-500 whitespace-nowrap">
+                  <!--        Username-->
+                  @{{ chat.author.username }}
+                  &middot;
+                  <!--        CreatedAt-->
+                  {{ chat.createdAt }}
+                </div>
+              </div>
+              <div>
+                <!--        Text   -->
+                {{ chat.text }}
+              </div>
+            </div>
+          </div>
+        </ng-container>
+      </div>
+    </div>
+  </div>
+  <!--  Message Panel-->
+  <div class="col-span-8 h-full overflow-auto flex flex-col">
+    <!--    Top Bar-->
+
+    <div class="py-3 px-4 flex items-center border-b dark:border-gray-700">
+      <!--    Avatar -->
+      <div class="">
+        <img class="h-7 w-7 mr-8" src="https://avatars2.githubusercontent.com/u/74118049?v=4" alt="User Avatar" />
+      </div>
+      <!--    Title-->
+      <div class="flex-grow">
+        <div class="font-semibold text-xl">Beeman</div>
+      </div>
+      <!--    Icon-->
+      <div class="">
+        <div class="h-6 w-6 bg-blue-600 md:bg-blue-600"></div>
+      </div>
+    </div>
+    <div class="flex flex-col justify-between">
+      <!--      List of messages-->
+      <div class="flex-grow">
+        <ng-container *ngFor="let chat of chats">
+          <div class="py-4 px-4 border-b dark:border-gray-700 flex">
+            <!--    Avatar-->
+            <div>
+              <img class="w-12 h-12 rounded-full" [attr.src]="chat.author.avatarUrl" alt="User Avatar" />
+            </div>
+            <!--    Tweet-->
+            <div class="flex-grow">
+              <!--      Author Info-->
+              <div class="flex flex-nowrap items-center space-x-2">
+                <div class="dark:text-white font-semibold whitespace-nowrap">
+                  <!--        Name-->
+                  {{ chat.author.name }}
+                </div>
+                <div class="dark:text-gray-500 whitespace-nowrap">
+                  <!--        Username-->
+                  @{{ chat.author.username }}
+                  &middot;
+                  <!--        CreatedAt-->
+                  {{ chat.createdAt }}
+                </div>
+              </div>
+              <div>
+                <!--        Text   -->
+                {{ chat.text }}
+              </div>
+            </div>
+          </div>
+        </ng-container>
+      </div>
+      <!--      Compose Message -->
+      <div class="">
+        <div class="px-4 py-2 flex justify-between items-center">
+          <div class="flex space-x-3">
+            <div class="h-6 w-6 bg-blue-600 md:bg-blue-600"></div>
+            <div class="h-6 w-6 bg-blue-600 md:bg-blue-600"></div>
+          </div>
+          <div class="flex-grow px-3">
+            <input
+              type="text"
+              placeholder="Write new Message"
+              class="dark:bg-gray-800 dark:border-blue-600 dark:text-gray-300 px-2 w-full rounded-full"
+            />
+          </div>
+          <div class="h-6 w-6 bg-blue-600 md:bg-blue-600"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
